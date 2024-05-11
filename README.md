@@ -1,4 +1,5 @@
 # SnapSanix-GUI-MM2
+loadstring(game:HttpGet('https://raw.githubusercontent.com/Roman34296589/SnapSanix-GUI-MM2/main/SnapSanix%20GUI%20mm2.lua'))()
 ------------------------------
 5/11/24 2nd Version 
 Added Destroy GUI
