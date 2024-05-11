@@ -1,7 +1,7 @@
 print("Script loading....")
 print("loaded?...")
 game.StarterGui:SetCore("SendNotification", {
-	Title = "SnapSanix Hub V2.0";
+	Title = "SnapSanix Hub V2.1";
 	Text = "Hi! Hub Version 1.1 My YT Channel: @Snapsan";
 	Icon = "http://www.roblox.com/asset/?id=15076243399";
 	Duration = 10;
@@ -67,6 +67,20 @@ local Window = Rayfield:CreateWindow({
 		loadstring(game:HttpGet("https://cdn.wearedevs.net/scripts/Dex%20Explorer.txt"))()
 	end,
  })
+ -- get all emotes
+ local Button = PlayerTab:CreateButton({
+	Name = "Get All Emotes [its FE and keybind = ,]",
+	Callback = function()
+		game.StarterGui:SetCore("SendNotification", {
+			Title = "SnapSanix Hub";
+			Text = "Keybind = ,";
+			Icon = "http://www.roblox.com/asset/?id=15076243399";
+			Duration = 10;
+			Button1 = "Okay";
+		})
+		loadstring(game:HttpGetAsync("https://raw.githubusercontent.com/Gi7331/scripts/main/Emote.lua"))()
+	end,
+ })
  -- charater
  local Section = PlayerTab:CreateSection("Character")
  --toggle Jump inf
@@ -116,8 +130,57 @@ local Window = Rayfield:CreateWindow({
 		Rayfield:Destroy()
 	end,
  })
+ --репорт ошибка
+ local Button = PlayerTab:CreateButton({
+	Name = "Report Errors [Google Forms]",
+	Callback = function()
+		setclipboard("https://forms.gle/kLxHBZfa9E58Vx5p8")
+		game.StarterGui:SetCore("SendNotification", {
+			Title = "SnapSanix Hub";
+			Text = "Copy To Clipboard!";
+			Icon = "http://www.roblox.com/asset/?id=15076243399";
+			Duration = 10;
+			Button1 = "Okay";w
+		})
+	end,
+ })
  -- подраздел Teleport
-local TeleportTab = Window:CreateTab("Teleport", 6723742952) -- Title, Image
+ local TeleportTab = Window:CreateTab("Teleport", 6723742952) -- Title, Image
+ --section autofarm
+ local Section = TeleportTab:CreateSection("Autofarm [Alpha]")
+ local Button = TeleportTab:CreateButton({
+	Name = "AutoFarm [Very Slow and Risky]",
+	Callback = function()
+		local WaitTime = 3.0
+		local MaxCoins = 40
+		
+		local function OnNewRound(CoinContainer)
+			local Character = game.Players.LocalPlayer.Character
+			local Coins = 0
+			while Coins < MaxCoins and CoinContainer.Parent do
+				for i, Coin in pairs (CoinContainer:GetChildren()) do
+					if Coin.Name == "Coin_Server" then
+						Character.PrimaryPart.CFrame = CFrame.new(Coin.Position)
+						wait(WaitTime)
+				Coins = Coins + 1
+					end
+				end
+			wait()
+			end
+		end
+		
+		game.Workspace.DescendantAdded:Connect(function(Instance)
+			if Instance.Name == "CoinContainer" then
+				OnNewRound(Instance)
+			end
+		end)
+		
+		local CoinContainer = game.Workspace:FindFirstChild("CoinContainer", true)
+		if CoinContainer then
+			OnNewRound(CoinContainer)
+		end
+	end,
+ })
 -- section teleport
 local Section = TeleportTab:CreateSection("Teleport")
 -- телепорт гай
