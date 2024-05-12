@@ -1,7 +1,7 @@
 print("Script loading....")
 print("loaded?...")
 game.StarterGui:SetCore("SendNotification", {
-	Title = "SnapSanix Hub V2.1";
+	Title = "SnapSanix Hub V2.2";
 	Text = "Hi! Hub Version 1.1 My YT Channel: @Snapsan";
 	Icon = "http://www.roblox.com/asset/?id=15076243399";
 	Duration = 10;
@@ -43,7 +43,7 @@ local Window = Rayfield:CreateWindow({
 	Callback = function()
 		game.StarterGui:SetCore("SendNotification", {
 			Title = "SnapSanix Hub";
-			Text = "IY Loaded?";
+			Text = "IY Loaded";
 			Icon = "http://www.roblox.com/asset/?id=15076243399";
 			Duration = 10;
 			Button1 = "Yes";
@@ -130,6 +130,30 @@ local Window = Rayfield:CreateWindow({
 		Rayfield:Destroy()
 	end,
  })
+ --other
+ local Section = PlayerTab:CreateSection("Other")
+ --rejoin
+ local Button = PlayerTab:CreateButton({
+	Name = "Rejoin",
+	Callback = function()
+		game:GetService'TeleportService':TeleportToPlaceInstance(game.PlaceId,game.JobId,game:GetService'Players'.LocalPlayer)
+	end,
+ })
+ --reset
+ local Button = PlayerTab:CreateButton({
+	Name = "Fast Reset",
+	Callback = function()
+		local player = game:GetService("Players").LocalPlayer
+
+		if player.Character and player.Character:FindFirstChild("Head") then
+			-- Удаляем голову
+			player.Character.Head:Destroy()
+			print("Голова игрока удалена!")
+		else
+			print("У игрока нет головы или персонаж не загружен.")
+		end
+	end,
+ })
  --репорт ошибка
  local Button = PlayerTab:CreateButton({
 	Name = "Report Errors [Google Forms]",
@@ -148,37 +172,17 @@ local Window = Rayfield:CreateWindow({
  local TeleportTab = Window:CreateTab("Teleport", 6723742952) -- Title, Image
  --section autofarm
  local Section = TeleportTab:CreateSection("Autofarm [Alpha]")
+ --autofarm 
  local Button = TeleportTab:CreateButton({
-	Name = "AutoFarm [Very Slow and Risky]",
+	Name = "AutoFarm Coins [Soon]",
 	Callback = function()
-		local WaitTime = 3.0
-		local MaxCoins = 40
-		
-		local function OnNewRound(CoinContainer)
-			local Character = game.Players.LocalPlayer.Character
-			local Coins = 0
-			while Coins < MaxCoins and CoinContainer.Parent do
-				for i, Coin in pairs (CoinContainer:GetChildren()) do
-					if Coin.Name == "Coin_Server" then
-						Character.PrimaryPart.CFrame = CFrame.new(Coin.Position)
-						wait(WaitTime)
-				Coins = Coins + 1
-					end
-				end
-			wait()
-			end
-		end
-		
-		game.Workspace.DescendantAdded:Connect(function(Instance)
-			if Instance.Name == "CoinContainer" then
-				OnNewRound(Instance)
-			end
-		end)
-		
-		local CoinContainer = game.Workspace:FindFirstChild("CoinContainer", true)
-		if CoinContainer then
-			OnNewRound(CoinContainer)
-		end
+		game.StarterGui:SetCore("SendNotification", {
+			Title = "SnapSanix Hub";
+			Text = "Coming Soon";
+			Icon = "http://www.roblox.com/asset/?id=15076243399";
+			Duration = 10;
+			Button1 = "Okay";
+		})
 	end,
  })
 -- section teleport
@@ -413,6 +417,13 @@ w})
 		end
 	end,
  })
+ -- reach knife
+ local Button = CombatTab:CreateButton({
+	Name = "Reach Knife",
+	Callback = function()
+		loadstring(game:HttpGet("https://pastebin.com/raw/pikP6mjE"))()
+	end,
+ })
  --kill all кнопка
  local Button = CombatTab:CreateButton({
     Name = "Kill all [Only Murder]",
@@ -428,6 +439,18 @@ w})
             end
         end
     end,
+ })
+ -- shoot murderer
+ local Button = CombatTab:CreateButton({
+	Name = "Shoot Murderer [Soon]",
+	Callback = function()
+		game.StarterGui:SetCore("SendNotification", {
+			Title = "SnapSanix Hub";
+			Text = "I'm sorry it's hard to do that soon in a new update. Difficult because solara is only 55% UNC.";
+			Icon = "http://www.roblox.com/asset/?id=13293140775";
+			Duration = 10;
+		})
+	end,
  })
  --кнопка silent aim
  local Button = CombatTab:CreateButton({
@@ -1247,5 +1270,12 @@ w})
 	Name = "Sprint Trail",
 	Callback = function()
 		game:GetService("Workspace")[game.Players.LocalPlayer.Name].SpeedTrail.Toggle:FireServer(true)
+	end,
+ })
+ -- rtx shaders
+ local Button = VisualTab:CreateButton({
+	Name = "RTX Shaders",
+	Callback = function()
+		loadstring(game:HttpGet(('https://raw.githubusercontent.com/R3TH-PRIV/R3THPRIV/main/OtherScripts/RTX%20Shaders.lua'),true))()
 	end,
  })
