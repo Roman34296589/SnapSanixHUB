@@ -419,7 +419,7 @@ w})
  })
  -- reach knife
  local Button = CombatTab:CreateButton({
-	Name = "Reach Knife",
+	Name = "Reach Knife [Customizable]",
 	Callback = function()
 		loadstring(game:HttpGet("https://pastebin.com/raw/pikP6mjE"))()
 	end,
