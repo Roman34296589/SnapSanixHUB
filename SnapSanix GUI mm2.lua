@@ -553,7 +553,7 @@ w})
 
 		local function CursorLock()
 			UIS.MouseBehavior = Enum.MouseBehavior.LockCenter
-		endц
+		end
 
 		local function UnLockCursor()
 			HoldingM2 = false Active = false Lock = false 
