@@ -1,8 +1,8 @@
 print("Script loading....")
 print("loaded?...")
 game.StarterGui:SetCore("SendNotification", {
-	Title = "SnapSanix Hub V2.2";
-	Text = "Hi! Hub Version 1.1 My YT Channel: @Snapsan";
+	Title = "SnapSanix Hub V2.3";
+	Text = "Hi! Hub Version 2.3 My YT Channel: @Snapsan";
 	Icon = "http://www.roblox.com/asset/?id=15076243399";
 	Duration = 10;
 	Button1 = "Ok"
@@ -440,18 +440,89 @@ w})
         end
     end,
  })
- -- shoot murderer
+ ----- shoot murder or kill  sheriff
+ local function GetMurderer()
+    local plrs = game:GetService("Players")
+    for i,v in pairs(plrs:GetPlayers()) do
+        if v.Character and (v.Character:FindFirstChild("Knife") or (v.Backpack and v.Backpack:FindFirstChild("Knife"))) then
+            return v
+        end
+    end
+    return nil
+ end
+
+ local function ShootMurderer()
+    local Murderer = GetMurderer() --// Gets the userdata of the murderer
+    if Murderer then
+        local pos = Murderer.Character.HumanoidRootPart.Position
+        repeat
+            if Murderer.Character.Humanoid.Health > 0 then --// Checking if there actually is a living murderer
+                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = Murderer.Character.HumanoidRootPart.CFrame * CFrame.new(0, 0, 5)
+                workspace.CurrentCamera.CFrame = Murderer.Character.HumanoidRootPart.CFrame
+            end
+            wait()
+        until Murderer.Character.Humanoid.Health == 0
+    end
+ end
+ local function GetSheriff()
+    local plrs = game:GetService("Players")
+    for i,v in pairs(plrs:GetPlayers()) do
+        if v.Character and (v.Character:FindFirstChild("Gun") or (v.Backpack and v.Backpack:FindFirstChild("Gun"))) then
+            return v
+        end
+    end
+    return nil
+ end
+
+ local function KillSheriff()
+    local Murderer = GetSheriff() --// Gets the userdata of the murderer
+    if Murderer then
+        local pos = Murderer.Character.HumanoidRootPart.Position
+        repeat
+            if Murderer.Character.Humanoid.Health > 0 then --// Checking if there actually is a living murderer
+                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = Murderer.Character.HumanoidRootPart.CFrame * CFrame.new(0, 0, 3)
+                workspace.CurrentCamera.CFrame = Murderer.Character.HumanoidRootPart.CFrame
+            end
+            wait()
+        until Murderer.Character.Humanoid.Health == 0
+    end
+ end
+
+ local function ShootMurder()
+    local players = game:GetService("Players")
+    local player = players.LocalPlayer
+    player.CameraMode = Enum.CameraMode.LockFirstPerson
+    wait(0.3)
+    ShootMurderer()
+    player.CameraMode = Enum.CameraMode.Classic
+ end
+
  local Button = CombatTab:CreateButton({
-	Name = "Shoot Murderer [Soon]",
-	Callback = function()
-		game.StarterGui:SetCore("SendNotification", {
-			Title = "SnapSanix Hub";
-			Text = "I'm sorry it's hard to do that soon in a new update. Difficult because solara is only 55% UNC.";
-			Icon = "http://www.roblox.com/asset/?id=13293140775";
-			Duration = 10;
-		})
-	end,
+    Name = "Shoot Murderer or Kill Sheriff",
+    Callback = function()
+        local players = game:GetService("Players")
+        local player = players.LocalPlayer
+        -- Check if the player has a gun in their inventory
+        if player.Backpack:FindFirstChild("Gun") or player.Character:FindFirstChild("Gun") then
+            player.CameraMode = Enum.CameraMode.LockFirstPerson
+            wait(0.3)
+            ShootMurderer()
+            player.CameraMode = Enum.CameraMode.Classic
+        else
+			if player.Backpack:FindFirstChild("Knife") or player.Character:FindFirstChild("Knife") then
+				KillSheriff()
+			else
+				game.StarterGui:SetCore("SendNotification", {
+					Title = "SnapSanix Hub";
+					Text = "You're not a sheriff and you're not a murderer!";
+					Icon = "http://www.roblox.com/asset/?id=13293140775";
+					Duration = 10;
+				})
+			end
+        end
+    end,
  })
+
  --кнопка silent aim
  local Button = CombatTab:CreateButton({
 	Name = "Silent Aim [Only Sheriff]",
@@ -1272,6 +1343,19 @@ w})
 		game:GetService("Workspace")[game.Players.LocalPlayer.Name].SpeedTrail.Toggle:FireServer(true)
 	end,
  })
+ local Button = VisualTab:CreateButton({
+	Name = "Xray [Soon]",
+	Callback = function()
+		game.StarterGui:SetCore("SendNotification", {
+			Title = "SnapSanix Hub";
+			Text = "Coming Soon";
+			Icon = "http://www.roblox.com/asset/?id=15076243399";
+			Duration = 10;
+			Button1 = "Ok"
+		})
+	end,
+ })
+
  -- rtx shaders
  local Button = VisualTab:CreateButton({
 	Name = "RTX Shaders",
