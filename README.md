@@ -17,6 +17,7 @@ Fly Coming Soon
 Noclip Coming Soon
 Silent Aim coming soon
 sprint Coming soon
+![Screenshot_32](https://github.com/Roman34296589/SnapSanix-GUI-MM2/assets/63724487/392c04ae-b289-48df-be57-ae7bc1176977)
 ---------------------------------------------------------------------------------------------------
 5/14/24 version 2.4
 Added AImbot for Sheriff Keycode = z and x
