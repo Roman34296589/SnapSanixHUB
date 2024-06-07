@@ -4,6 +4,13 @@ loadstring(game:HttpGet('https://raw.githubusercontent.com/Roman34296589/SnapSan
 hub review: https://youtu.be/0v0CKOUJ7EY?si=zSk-KOQVAJPJVmME
 ![Screenshot_13](https://github.com/Roman34296589/SnapSanix-GUI-MM2/assets/63724487/436b43ab-8f22-4e01-9abc-1bdbdb3c97b4)
 ![Roblox VR 2024 05 11 - 19 54 26 02](https://github.com/Roman34296589/SnapSanix-GUI-MM2/assets/63724487/da45244f-8d91-4086-878c-42bdd39d0e40)
+----------------------------------------------------------------------------------------------
+Mini update 6/7/24 version 2.7 pre-release
+deleted auto silent aim
+added and fixed silent aim
+--------------------------------------------------------------------------------------------
+Mini update 6/6/24 version 2.6 pre-release
+added auto silent aim
 --------------------------------------------------------------------------------------------------------------
 Mini Update 6/06/24 version 2.5 pre-release😎😎😎
 Fixed Teleport to Sheriff
