@@ -1,6 +1,6 @@
 game.StarterGui:SetCore("SendNotification", {
 	Title = "SnapSanix Hub RIP 5/9/24 - 8/13/24";
-	Text = "SnapSanix Hub Got leaked F PRESS😭";
+	Text = "";
 	Icon = "http://www.roblox.com/asset/?id=17816113278";
 	Duration = 20;
 })
@@ -19,3 +19,4 @@ ImageLabel.BorderSizePixel = 0
 ImageLabel.Position = UDim2.new(0.200455576, 0, 0.236842111, 0)
 ImageLabel.Size = UDim2.new(0, 788, 0, 420)
 ImageLabel.Image = "http://www.roblox.com/asset/?id=18932006992"
+print("the end")
