@@ -444,7 +444,14 @@ do
 			end
 		end
 	end
-	
+
+    function library:DestroyUI()
+        if self.container then
+            self.container:Destroy()
+            self.container = nil
+        end
+    end
+    
 	function library:toggle()
 	
 		if self.toggling then
