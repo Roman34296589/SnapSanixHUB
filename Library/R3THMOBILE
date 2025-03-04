@@ -201,7 +201,7 @@ do
 	page.__index = page
 	section.__index = section
 	
-	function library.new(title)
+	function library.new(title,razmer1,razmer2)
 		local container = utility:Create("ScreenGui", {
 			Name = title,
 			Parent = game.CoreGui
@@ -210,7 +210,7 @@ do
 				Name = "Main",
 				BackgroundTransparency = 1,
 				Position = UDim2.new(0.25, 0, 0.052435593, 0),
-				Size = UDim2.new(0, 361, 0, 370),
+				Size = UDim2.new(0, razmer1, 0, razmer2),
 				Image = "rbxassetid://4641149554",
 				ImageColor3 = themes.Background,
 				ScaleType = Enum.ScaleType.Slice,
