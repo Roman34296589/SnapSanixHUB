@@ -1,3 +1,4 @@
+
 local player = game.Players.LocalPlayer
 local mouse = player:GetMouse()
 
@@ -289,20 +290,26 @@ do
 			})
 		})
 	
-		-- Функция для изменения размеров всех элементов при изменении Main
-		function container:setSize(width, height)
-			self.Main.Size = UDim2.new(0, width, 0, height)
-	
-			-- Обновление всех вложенных элементов
-			for _, v in pairs(self.Main:GetDescendants()) do
+		function library:setSize(width, height)
+			if not self.container or not self.container.Main then
+				warn("GUI не инициализировано!")
+				return
+			end
+		
+			local main = self.container.Main
+			main.Size = UDim2.new(0, width, 0, height)
+		
+			-- Обновление размеров вложенных элементов
+			for _, v in pairs(main:GetDescendants()) do
 				if v:IsA("GuiObject") then
-					v.Size = UDim2.new(v.Size.X.Scale, v.Size.X.Offset * (width / 511), 
-										v.Size.Y.Scale, v.Size.Y.Offset * (height / 428))
-					v.Position = UDim2.new(v.Position.X.Scale, v.Position.X.Offset * (width / 511), 
+					v.Size = UDim2.new(v.Size.X.Scale, v.Size.X.Offset * (width / 511),
+									   v.Size.Y.Scale, v.Size.Y.Offset * (height / 428))
+					v.Position = UDim2.new(v.Position.X.Scale, v.Position.X.Offset * (width / 511),
 										   v.Position.Y.Scale, v.Position.Y.Offset * (height / 428))
 				end
 			end
 		end
+		
 	
 		-- Применение изменения при изменении экрана
 		game:GetService("RunService").RenderStepped:Connect(function()
