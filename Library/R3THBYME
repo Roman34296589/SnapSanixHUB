@@ -310,13 +310,6 @@ do
 			end
 		end
 		
-	
-		-- Применение изменения при изменении экрана
-		game:GetService("RunService").RenderStepped:Connect(function()
-			container:setSize(width, height)
-		end)
-	
-		return setmetatable({ container = container }, library)
 	end
 	
 	
