@@ -201,7 +201,7 @@ do
 	page.__index = page
 	section.__index = section
 	
-	function library.new(title,razmer1,razmer2)
+	function library.new(title)
 		local container = utility:Create("ScreenGui", {
 			Name = title,
 			Parent = game.CoreGui
@@ -210,7 +210,7 @@ do
 				Name = "Main",
 				BackgroundTransparency = 1,
 				Position = UDim2.new(0.25, 0, 0.052435593, 0),
-				Size = UDim2.new(0, razmer1, 0, razmer2),
+				Size = UDim2.new(0, 450, 0, 315),
 				Image = "rbxassetid://4641149554",
 				ImageColor3 = themes.Background,
 				ScaleType = Enum.ScaleType.Slice,
@@ -465,7 +465,7 @@ do
 		
 		if self.position then
 			utility:Tween(container, {
-				Size = UDim2.new(0, 511, 0, 428),
+				Size = UDim2.new(0, 450, 0, 315),
 				Position = self.position
 			}, 0.2)
 			wait(0.2)
@@ -483,8 +483,8 @@ do
 			wait(0.2)
 			
 			utility:Tween(container, {
-				Size = UDim2.new(0, 511, 0, 0),
-				Position = self.position + UDim2.new(0, 0, 0, 428)
+				Size = UDim2.new(0, 450, 0, 0),
+				Position = self.position + UDim2.new(0, 0, 0, 315)
 			}, 0.2)
 			wait(0.2)
 		end
